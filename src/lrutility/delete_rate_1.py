@@ -47,7 +47,7 @@ def delete_rate_1(args: argparse.Namespace) -> None:
 
 
 def delete_rate_1_cli() -> None:
-    """CLIエントリーポイント: レーティング1の画像ファイルとXMPファイルを削除。"""
+    """CLI entry point: Delete image files and XMP files with rating 1."""
     parser = argparse.ArgumentParser(
         description="Delete image files and XMP files with rating 1"
     )

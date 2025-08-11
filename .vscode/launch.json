@@ -10,20 +10,5 @@
             "justMyCode": false,
             "cwd": "${workspaceFolder}"
         },
-        {
-            "name": "Delete Rate 1 (Dry Run + Verbose)",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "example.run_delete_rate_1",
-            "console": "integratedTerminal",
-            "justMyCode": false,
-            "cwd": "${workspaceFolder}",
-            "args": [
-                "--target",
-                "tests/assets",
-                "--dry_run",
-                "--verbose"
-            ]
-        }
     ]
 }

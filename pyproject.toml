@@ -30,6 +30,7 @@ default-groups = ["test", "lint"]
 
 [project.scripts]
 delete_rate_1 = "lrutility.delete_rate_1:delete_rate_1_cli"
+zip_chunker = "lrutility.zip_chunker:zip_chunker_cli"
 
 [build-system]
 requires = ["uv_build>=0.8.8,<0.9.0"]
