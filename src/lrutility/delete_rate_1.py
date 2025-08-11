@@ -4,8 +4,19 @@ from pathlib import Path
 from loguru import logger
 
 from lrutility.logger import configure_loguru
-from lrutility.utils import delete_image_and_xmp
 from lrutility.XMPParser import XMPParser
+
+
+def delete_image_and_xmp(raw_path: Path, xmp_path: Path, dry_run: bool) -> None:
+    message_template = "Deleted: {path}"
+    if dry_run:
+        logger.debug(f"[DRY RUN]: {message_template.format(path=raw_path)}")
+        logger.debug(f"[DRY RUN]: {message_template.format(path=xmp_path)}")
+    else:
+        raw_path.unlink()
+        logger.info(message_template.format(path=raw_path))
+        xmp_path.unlink()
+        logger.info(message_template.format(path=xmp_path))
 
 
 def delete_rate_1(args: argparse.Namespace) -> None:
@@ -16,11 +27,11 @@ def delete_rate_1(args: argparse.Namespace) -> None:
         logger.error(f"Target Directory Does Not Exist: {args.target.resolve()}")
         return
 
-    parser = XMPParser()  # XMPParserインスタンスを作成
+    parser = XMPParser()
 
     meta_paths = args.target.glob("**/*.xmp")
     for meta_path in meta_paths:
-        metadata = parser.parse(meta_path)  # parseメソッドを使用
+        metadata = parser.parse(meta_path)
         if metadata.xmp_info.rating is None:
             logger.debug(f"No Rating in xmp: {meta_path}")
             continue
