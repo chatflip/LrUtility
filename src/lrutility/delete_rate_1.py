@@ -21,10 +21,13 @@ def delete_image_and_xmp(raw_path: Path, xmp_path: Path, dry_run: bool) -> None:
 
 def delete_rate_1(args: argparse.Namespace) -> None:
     configure_loguru(args.verbose)
+    if args.target is None:
+        logger.error("Target Directory is not specified")
+        return
 
-    logger.info(f"Target Directory: {args.target.resolve()}")
+    logger.info(f"Target Directory: {args.target}")
     if not args.target.exists():
-        logger.error(f"Target Directory Does Not Exist: {args.target.resolve()}")
+        logger.error(f"Target Directory Does Not Exist: {args.target}")
         return
 
     parser = XMPParser()
@@ -53,13 +56,6 @@ def delete_rate_1_cli() -> None:
         type=Path,
         nargs="?",  # オプショナルな位置引数
         help="Target directory to search for XMP files",
-    )
-    parser.add_argument(
-        "-t",
-        "--target",
-        type=Path,
-        required=True,
-        help="Target directory to search for XMP files (default: tests/assets)",
     )
     parser.add_argument(
         "-d",
