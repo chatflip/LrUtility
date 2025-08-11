@@ -49,6 +49,12 @@ def delete_rate_1_cli() -> None:
         description="Delete image files and XMP files with rating 1"
     )
     parser.add_argument(
+        "target",
+        type=Path,
+        nargs="?",  # オプショナルな位置引数
+        help="Target directory to search for XMP files",
+    )
+    parser.add_argument(
         "-t",
         "--target",
         type=Path,
