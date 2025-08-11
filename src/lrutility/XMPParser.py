@@ -5,7 +5,7 @@ from pathlib import Path
 from loguru import logger
 
 from lrutility.logger import configure_loguru
-from lrutility.xmp_dataclass import (
+from lrutility.XMPDataclass import (
     CameraRawSettings,
     DublinCoreInfo,
     DynamicMediaInfo,
