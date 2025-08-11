@@ -47,7 +47,7 @@ def main(args: argparse.Namespace) -> None:
     for meta_path in meta_paths:
         meta_dict = load_xmp(meta_path)
         if "Rating" not in meta_dict:
-            logger.debug(f"not rating in xmp: {meta_path}")
+            logger.debug(f"No Rating in xmp: {meta_path}")
             continue
         rating = meta_dict["Rating"]
         raw_filename = meta_dict["RawFileName"]

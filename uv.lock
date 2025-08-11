@@ -39,6 +39,7 @@ version = "0.0.1"
 source = { virtual = "." }
 dependencies = [
     { name = "loguru" },
+    { name = "pyexiv2" },
 ]
 
 [package.dev-dependencies]
@@ -55,7 +56,10 @@ test = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "loguru", specifier = ">=0.7.3" }]
+requires-dist = [
+    { name = "loguru", specifier = ">=0.7.3" },
+    { name = "pyexiv2", specifier = ">=2.15.4" },
+]
 
 [package.metadata.requires-dev]
 lint = [
@@ -240,6 +244,28 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/f9/e2/3e91f31a7d2b083fe6ef3fa267035b518369d9511ffab804f839851d2779/pluggy-1.6.0.tar.gz", hash = "sha256:7dcc130b76258d33b90f61b658791dede3486c3e6bfb003ee5c9bfb396dd22f3", size = 69412, upload-time = "2025-05-15T12:30:07.975Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl", hash = "sha256:e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746", size = 20538, upload-time = "2025-05-15T12:30:06.134Z" },
+]
+
+[[package]]
+name = "pyexiv2"
+version = "2.15.4"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/64/83/117d9654ed85f27dad90aead01cf42e8c90b5a67a1fd17791a25c98a7233/pyexiv2-2.15.4-cp311-none-macosx_13_0_x86_64.whl", hash = "sha256:a1a5feb8480b68e1713b3c0f237305282c43412eba27a756bf7b512753224c70", size = 1489599, upload-time = "2025-05-09T11:08:35.658Z" },
+    { url = "https://files.pythonhosted.org/packages/43/a1/d5705241b44302d2de876273e2f5d364f86c411eb5bdf94dadbe2917a4c9/pyexiv2-2.15.4-cp311-none-macosx_14_0_arm64.whl", hash = "sha256:72028844b15b8613123f0c8498ed53ba13301a21d0dc465ba6a27786888031c5", size = 1296368, upload-time = "2025-05-09T11:08:38.304Z" },
+    { url = "https://files.pythonhosted.org/packages/6b/08/b95af849aaa5d83c99553b89ca8a0e2b3a55243079e70e1ce5b3f23978c2/pyexiv2-2.15.4-cp311-none-manylinux2014_aarch64.whl", hash = "sha256:d8640594601a5489ea7297d13f4bef2e5bbcca3e8870d3381a03a56f882f09a5", size = 1483877, upload-time = "2025-05-09T11:08:40.969Z" },
+    { url = "https://files.pythonhosted.org/packages/6a/7e/162f3c16d2a76d41a2af9676dd5d9faa335eb06c2c4519274d509e26eaee/pyexiv2-2.15.4-cp311-none-manylinux2014_x86_64.whl", hash = "sha256:2777031c4119870e8ef9635d4d72957dae2e607b48844a24bd52ec5be56a9879", size = 1568226, upload-time = "2025-05-09T11:08:44.274Z" },
+    { url = "https://files.pythonhosted.org/packages/ce/ca/3eb13309e53f5792c1462afd4fee08ba37cf0f0a2f5ba8fae6314a94e2a8/pyexiv2-2.15.4-cp311-none-win_amd64.whl", hash = "sha256:3e95d23dbcdf7117425f9117b6afb3081c4045a69a3474b588f58a22c40dde65", size = 1192853, upload-time = "2025-05-09T11:08:47.499Z" },
+    { url = "https://files.pythonhosted.org/packages/34/c6/52e9d2be9c204c7799f7de6385cc6dab94085203bd7f05d65dedb4ac45f7/pyexiv2-2.15.4-cp312-none-macosx_13_0_x86_64.whl", hash = "sha256:c342739c887fd9b406df405beac0323198196a84b14fab429b9e09f69ed639ef", size = 1488629, upload-time = "2025-05-09T11:08:50.627Z" },
+    { url = "https://files.pythonhosted.org/packages/41/1f/6811a039dc91b1abc08f556018256a9319044d9bcb0ffb780ec29541196f/pyexiv2-2.15.4-cp312-none-macosx_14_0_arm64.whl", hash = "sha256:53299aae12118596bf52ec9e90bd1efc9636266291a2d103708dee0252b30342", size = 1294185, upload-time = "2025-05-09T11:08:53.049Z" },
+    { url = "https://files.pythonhosted.org/packages/6c/8a/d4489a694621ac328a138d060715248b5c19c10989412dcddbf4612c1162/pyexiv2-2.15.4-cp312-none-manylinux2014_aarch64.whl", hash = "sha256:c04e9df0cf5b1670252e06c72e7b5e785754454db6beeb50aa04e88e414e4b5c", size = 1483404, upload-time = "2025-05-09T11:08:56.071Z" },
+    { url = "https://files.pythonhosted.org/packages/c0/8b/2ba4da6a5185a65063670da54e829329a560b6551f9a5e1fa6f0ce012d12/pyexiv2-2.15.4-cp312-none-manylinux2014_x86_64.whl", hash = "sha256:6dc5333bc16f829546a4e28f8ff8b17734757af9e6ba0c0e46ed34e09f2463ce", size = 1567929, upload-time = "2025-05-09T11:08:58.378Z" },
+    { url = "https://files.pythonhosted.org/packages/41/95/7f7885282128cc95930c7ebafcff049aed07af6f9caece79ecaef64b2c83/pyexiv2-2.15.4-cp312-none-win_amd64.whl", hash = "sha256:69a4395f45c7e2a04f8a7e80229e1518ef63c038ee8c8a43e30eff4517fa1cbf", size = 1192670, upload-time = "2025-05-09T11:09:00.534Z" },
+    { url = "https://files.pythonhosted.org/packages/b7/20/c812d6fc78d8e265f6741242fabde5933cbca6d425d64e79121ce18f723b/pyexiv2-2.15.4-cp313-none-macosx_13_0_x86_64.whl", hash = "sha256:4304308b3390ec6393486d04b1b73b029e3c2aa975790341cffb7d22c8574313", size = 1489106, upload-time = "2025-05-09T11:09:03.664Z" },
+    { url = "https://files.pythonhosted.org/packages/d8/e6/640c41cf89e818078c90511027e65df696198e0474e313f6de06974de747/pyexiv2-2.15.4-cp313-none-macosx_14_0_arm64.whl", hash = "sha256:418f5c17992235c0abb044512ea6438503fb2b939cfd9b8f8487084197f46060", size = 1294829, upload-time = "2025-05-09T11:09:06.738Z" },
+    { url = "https://files.pythonhosted.org/packages/54/d3/f453cb15e216d2c02f12bcf6d24d45fd913a5035add2bdf020a0948578e8/pyexiv2-2.15.4-cp313-none-manylinux2014_aarch64.whl", hash = "sha256:2caad49c14a9880674b8de2d19bbee15982f70237bb5edeb4369ea14a2d2e11c", size = 1483653, upload-time = "2025-05-09T11:09:09.804Z" },
+    { url = "https://files.pythonhosted.org/packages/39/7b/a35cae172be1935c923b74cc588e4cd82a8d65732b647f216ef90cc8109e/pyexiv2-2.15.4-cp313-none-manylinux2014_x86_64.whl", hash = "sha256:056efb0d05725bacdb4a103dc28f0e879db4ba2ca9d6b9d7c0f53132d8480310", size = 1567923, upload-time = "2025-05-09T11:09:13.277Z" },
+    { url = "https://files.pythonhosted.org/packages/6d/9a/173abf779579e11388070c4f31259e0e6be945b6af7fadaf500e789ce5de/pyexiv2-2.15.4-cp313-none-win_amd64.whl", hash = "sha256:238971d2143e5e9af4c7a27ff3f593b220a707c798cda29e32edc6fae08c1af5", size = 1192809, upload-time = "2025-05-09T11:09:15.708Z" },
 ]
 
 [[package]]
