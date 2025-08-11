@@ -30,6 +30,7 @@ def delete_rate_1(args: argparse.Namespace) -> None:
     parser = XMPParser()
 
     meta_paths = args.target.glob("**/*.xmp")
+    meta_paths = sorted(meta_paths)
     for meta_path in meta_paths:
         metadata = parser.parse(meta_path)
         if metadata.xmp_info.rating is None:
