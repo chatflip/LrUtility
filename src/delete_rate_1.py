@@ -1,12 +1,11 @@
 import argparse
-import os
 import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from loguru import logger
 
-from utils import RAW_EXT, configure_loguru
+from utils import configure_loguru
 
 
 def load_xmp(xmp_path: Path) -> dict[str, str]:
@@ -25,28 +24,36 @@ def load_xmp(xmp_path: Path) -> dict[str, str]:
     return attr_dict  # type: ignore[return-value]
 
 
-def delete_image_and_xmp(raw_path: str, xmp_path: str) -> None:
-    os.remove(raw_path)
-    os.remove(xmp_path)
+def delete_image_and_xmp(raw_path: Path, xmp_path: Path, dry_run: bool) -> None:
+    if dry_run:
+        logger.debug(f"[DRY RUN] Deleted: {raw_path}")
+        logger.debug(f"[DRY RUN] Deleted: {xmp_path}")
+    else:
+        raw_path.unlink()
+        logger.info(f"Deleted: {raw_path}")
+        xmp_path.unlink()
+        logger.info(f"Deleted: {xmp_path}")
 
 
 def main(args: argparse.Namespace) -> None:
     configure_loguru(args.verbose)
 
-    logger.info(f"target directory: {args.target.resolve()}")
-    filenames = args.target.glob("**/*")
-    for filename in filenames:
-        if filename.suffix.lower() not in RAW_EXT:
-            continue
-        xmp_path = filename.with_suffix(".xmp")
-        if not xmp_path.exists():
-            continue
-        meta_dict = load_xmp(xmp_path)
+    logger.info(f"Target Directory: {args.target.resolve()}")
+    if not args.target.exists():
+        logger.error(f"Target Directory Does Not Exist: {args.target.resolve()}")
+        return
+
+    meta_paths = args.target.glob("**/*.xmp")
+    for meta_path in meta_paths:
+        meta_dict = load_xmp(meta_path)
         if "Rating" not in meta_dict:
+            logger.debug(f"not rating in xmp: {meta_path}")
             continue
         rating = meta_dict["Rating"]
+        raw_filename = meta_dict["RawFileName"]
+        raw_path = args.target / raw_filename
         if rating == "1":
-            delete_image_and_xmp(filename, xmp_path)
+            delete_image_and_xmp(raw_path, meta_path, args.dry_run)
 
 
 if __name__ == "__main__":
@@ -57,6 +64,11 @@ if __name__ == "__main__":
         type=Path,
         # required=True,
         default=Path("~/Desktop/raw_temp"),
+    )
+    parser.add_argument(
+        "-d",
+        "--dry_run",
+        action="store_true",
     )
     parser.add_argument(
         "-v",

@@ -4,7 +4,7 @@ import sys
 
 from loguru import logger
 
-RAW_EXT: tuple[str, str] = ("arw", "raw")
+RAW_EXT: tuple[str, str] = (".arw", ".raw")
 
 
 class InterceptHandler(logging.Handler):
