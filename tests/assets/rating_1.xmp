@@ -1,0 +1,111 @@
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 7.0-c000 1.000000, 0000/00/00-00:00:00        ">
+ <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about=""
+    xmlns:xmp="http://ns.adobe.com/xap/1.0/"
+    xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"
+    xmlns:stEvt="http://ns.adobe.com/xap/1.0/sType/ResourceEvent#"
+    xmlns:tiff="http://ns.adobe.com/tiff/1.0/"
+    xmlns:exif="http://ns.adobe.com/exif/1.0/"
+    xmlns:aux="http://ns.adobe.com/exif/1.0/aux/"
+    xmlns:exifEX="http://cipa.jp/exif/1.0/"
+    xmlns:photoshop="http://ns.adobe.com/photoshop/1.0/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:crd="http://ns.adobe.com/camera-raw-defaults/1.0/"
+    xmlns:xmpDM="http://ns.adobe.com/xmp/1.0/DynamicMedia/"
+    xmlns:crs="http://ns.adobe.com/camera-raw-settings/1.0/"
+   xmp:CreatorTool="ILCE-7M4 v5.00"
+   xmp:ModifyDate="2025-08-10T19:08:27.397+09:00"
+   xmp:CreateDate="2025-08-10T19:08:27.397+09:00"
+   xmp:MetadataDate="2025-08-11T19:59:39+09:00"
+   xmp:Rating="1"
+   xmpMM:DocumentID="urn:uuid:3053c0aa-8732-4b7b-a167-fec11ed398cf"
+   xmpMM:InstanceID="xmp.iid:431af323-9570-6e4d-8134-523ec0032438"
+   xmpMM:PreservedFileName="rating_1.ARW"
+   xmpMM:OriginalDocumentID="urn:uuid:3053c0aa-8732-4b7b-a167-fec11ed398cf"
+   tiff:Make="SONY"
+   tiff:Model="ILCE-7M4"
+   tiff:Orientation="1"
+   tiff:ImageWidth="7008"
+   tiff:ImageLength="4672"
+   exif:ExifVersion="0232"
+   exif:ExposureTime="1/100"
+   exif:ShutterSpeedValue="6643856/1000000"
+   exif:FNumber="28/10"
+   exif:ApertureValue="2970854/1000000"
+   exif:ExposureProgram="1"
+   exif:SensitivityType="2"
+   exif:RecommendedExposureIndex="1250"
+   exif:BrightnessValue="-6/2560"
+   exif:ExposureBiasValue="-10/10"
+   exif:MaxApertureValue="760/256"
+   exif:MeteringMode="5"
+   exif:LightSource="0"
+   exif:FocalLength="1300/10"
+   exif:FileSource="3"
+   exif:SceneType="1"
+   exif:FocalLengthIn35mmFilm="130"
+   exif:CustomRendered="0"
+   exif:ExposureMode="1"
+   exif:WhiteBalance="0"
+   exif:SceneCaptureType="0"
+   exif:Contrast="0"
+   exif:Saturation="0"
+   exif:Sharpness="0"
+   exif:DigitalZoomRatio="16/16"
+   exif:FocalPlaneXResolution="64449339/32768"
+   exif:FocalPlaneYResolution="64449339/32768"
+   exif:FocalPlaneResolutionUnit="3"
+   exif:DateTimeOriginal="2025-08-10T19:08:27.397+09:00"
+   exif:PixelXDimension="7008"
+   exif:PixelYDimension="4672"
+   aux:LensInfo="700/10 2000/10 28/10 28/10"
+   aux:Lens="FE 70-200mm F2.8 GM OSS II"
+   aux:LensDistortInfo="1048581241/1073741824 25924604/1073741824 -1082918/1073741824 300391/1073741824"
+   exifEX:LensModel="FE 70-200mm F2.8 GM OSS II"
+   photoshop:DateCreated="2025-08-10T19:08:27.397+09:00"
+   photoshop:SidecarForExtension="ARW"
+   photoshop:EmbeddedXMPDigest="283ADCEB6D44C16FCF057FCBD8391199"
+   dc:format="image/x-sony-arw"
+   crd:CameraProfile="Camera ST"
+   crd:LookName=""
+   xmpDM:pick="0"
+   crs:CropTop="0"
+   crs:CropLeft="0.055936"
+   crs:CropBottom="1"
+   crs:CropRight="0.944064"
+   crs:CropAngle="0"
+   crs:CropConstrainToWarp="0"
+   crs:CropConstrainToUnitSquare="1"
+   crs:HasCrop="True"
+   crs:AlreadyApplied="False"
+   crs:RawFileName="rating_1.ARW">
+   <xmpMM:History>
+    <rdf:Seq>
+     <rdf:li
+      stEvt:action="saved"
+      stEvt:instanceID="xmp.iid:43709827-55dd-8b45-89ee-1d34e593492b"
+      stEvt:when="2025-08-11T05:25:07+09:00"
+      stEvt:softwareAgent="Adobe Photoshop Lightroom Classic 14.4 (Windows)"
+      stEvt:changed="/metadata"/>
+     <rdf:li
+      stEvt:action="saved"
+      stEvt:instanceID="xmp.iid:431af323-9570-6e4d-8134-523ec0032438"
+      stEvt:when="2025-08-11T19:59:39+09:00"
+      stEvt:softwareAgent="Adobe Photoshop Lightroom Classic 14.4 (Windows)"
+      stEvt:changed="/metadata"/>
+    </rdf:Seq>
+   </xmpMM:History>
+   <exif:ISOSpeedRatings>
+    <rdf:Seq>
+     <rdf:li>1250</rdf:li>
+    </rdf:Seq>
+   </exif:ISOSpeedRatings>
+   <exif:Flash
+    exif:Fired="False"
+    exif:Return="0"
+    exif:Mode="2"
+    exif:Function="False"
+    exif:RedEyeMode="False"/>
+  </rdf:Description>
+ </rdf:RDF>
+</x:xmpmeta>

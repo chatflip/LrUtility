@@ -1,27 +1,10 @@
 import argparse
-import re
-import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from loguru import logger
 
 from utils import configure_loguru
-
-
-def load_xmp(xmp_path: Path) -> dict[str, str]:
-    tree = ET.parse(xmp_path)
-    root = tree.getroot()
-    pattern = r"\{.*?\}(.*)"
-    attr_dict = {}
-    for elem in root.iter():
-        for attr in elem.keys():
-            match = re.search(pattern, attr)
-            if not match:
-                continue
-            attr_name = match.group(1)
-            attr_value = elem.get(attr)
-            attr_dict[attr_name] = attr_value
-    return attr_dict  # type: ignore[return-value]
+from xmp_parser import parse_xmp_file
 
 
 def delete_image_and_xmp(raw_path: Path, xmp_path: Path, dry_run: bool) -> None:
@@ -45,14 +28,14 @@ def main(args: argparse.Namespace) -> None:
 
     meta_paths = args.target.glob("**/*.xmp")
     for meta_path in meta_paths:
-        meta_dict = load_xmp(meta_path)
-        if "Rating" not in meta_dict:
+        metadata = parse_xmp_file(meta_path)
+        if metadata.xmp_info.rating is None:
             logger.debug(f"No Rating in xmp: {meta_path}")
             continue
-        rating = meta_dict["Rating"]
-        raw_filename = meta_dict["RawFileName"]
+        rating = metadata.xmp_info.rating
+        raw_filename = metadata.camera_raw_settings.raw_file_name
         raw_path = args.target / raw_filename
-        if rating == "1":
+        if rating == 1:
             delete_image_and_xmp(raw_path, meta_path, args.dry_run)
 
 
@@ -63,7 +46,7 @@ if __name__ == "__main__":
         "--target",
         type=Path,
         # required=True,
-        default=Path("~/Desktop/raw_temp"),
+        default=Path("tests/assets"),
     )
     parser.add_argument(
         "-d",
