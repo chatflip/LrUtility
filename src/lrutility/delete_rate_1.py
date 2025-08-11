@@ -21,18 +21,18 @@ def delete_image_and_xmp(raw_path: Path, xmp_path: Path, dry_run: bool) -> None:
 
 def delete_rate_1(args: argparse.Namespace) -> None:
     configure_loguru(args.verbose)
-    if args.target is None:
+    if args.directory is None:
         logger.error("Target Directory is not specified")
         return
 
-    logger.info(f"Target Directory: {args.target}")
-    if not args.target.exists():
-        logger.error(f"Target Directory Does Not Exist: {args.target}")
+    logger.info(f"Target Directory: {args.directory}")
+    if not args.directory.exists():
+        logger.error(f"Target Directory Does Not Exist: {args.directory}")
         return
 
     parser = XMPParser()
 
-    meta_paths = args.target.glob("**/*.xmp")
+    meta_paths = args.directory.glob("**/*.xmp")
     meta_paths = sorted(meta_paths)
     for meta_path in meta_paths:
         metadata = parser.parse(meta_path)
@@ -41,7 +41,7 @@ def delete_rate_1(args: argparse.Namespace) -> None:
             continue
         rating = metadata.xmp_info.rating
         raw_filename = metadata.camera_raw_settings.raw_file_name
-        raw_path = args.target / raw_filename
+        raw_path = args.directory / raw_filename
         if rating == 1:
             delete_image_and_xmp(raw_path, meta_path, args.dry_run)
 
@@ -52,9 +52,9 @@ def delete_rate_1_cli() -> None:
         description="Delete image files and XMP files with rating 1"
     )
     parser.add_argument(
-        "target",
+        "directory",
         type=Path,
-        nargs="?",  # オプショナルな位置引数
+        nargs="?",
         help="Target directory to search for XMP files",
     )
     parser.add_argument(
