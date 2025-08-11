@@ -35,6 +35,39 @@ pip install git+https://github.com/chatflip/LrUtility.git
 pip install .
 ```
 
+### uv toolsとしてのインストール
+
+`uv tools`を使用することで、個別のコマンドツールとして簡単にインストールできます：
+
+```bash
+# GitHubからのツールインストール
+uv tool install git+https://github.com/chatflip/LrUtility.git
+
+# ローカルからのツールインストール
+uv tool install .
+
+# 特定のコマンドだけを使いたい場合も同様にインストール
+uv tool install git+https://github.com/chatflip/LrUtility.git
+```
+
+インストール後、以下のコマンドがグローバルに利用可能になります：
+
+- `delete_rate_1`
+- `zip_chunker`
+
+ツールの管理：
+
+```bash
+# インストール済みツールの確認
+uv tool list
+
+# ツールのアップデート
+uv tool upgrade lrutility
+
+# ツールのアンインストール
+uv tool uninstall lrutility
+```
+
 ## 使用方法
 
 ### 1. レーティング1の画像ファイル削除
