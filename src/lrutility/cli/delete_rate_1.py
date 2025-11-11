@@ -3,8 +3,8 @@ from pathlib import Path
 
 from loguru import logger
 
-from lrutility.logger import configure_loguru
-from lrutility.XMPParser import XMPParser
+from lrutility.utils.logger import configure_loguru
+from lrutility.xmp.XMPParser import XMPParser
 
 
 def delete_image_and_xmp(raw_path: Path, xmp_path: Path, dry_run: bool) -> None:

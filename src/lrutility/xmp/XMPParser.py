@@ -4,8 +4,7 @@ from pathlib import Path
 
 from loguru import logger
 
-from lrutility.logger import configure_loguru
-from lrutility.XMPDataclass import (
+from lrutility.xmp.XMPDataclass import (
     CameraRawSettings,
     DublinCoreInfo,
     DynamicMediaInfo,
@@ -443,6 +442,8 @@ class XMPParser:
 
 
 if __name__ == "__main__":
+    from lrutility.utils.logger import configure_loguru
+
     configure_loguru(verbose=True)
 
     rating_xmp_file = Path("tests/assets/rating_1.xmp")

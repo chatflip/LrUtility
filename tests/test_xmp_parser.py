@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from lrutility.XMPParser import XMPParser
+from lrutility.xmp.XMPParser import XMPParser
 
 
 class TestXmpParser:

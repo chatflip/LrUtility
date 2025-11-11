@@ -4,7 +4,7 @@ from pathlib import Path
 
 from loguru import logger
 
-from lrutility.logger import configure_loguru
+from lrutility.utils.logger import configure_loguru
 
 
 def group_files(files: list[Path], max_group_size: int) -> list[list[Path]]:
