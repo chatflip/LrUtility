@@ -11,61 +11,21 @@ Adobe Lightroomで使用されるXMPファイルを解析し、画像ファイ�
 ## 動作環境
 
 - Python >= 3.11
-- uv >= 0.7
+- uv >= 0.8
 
 ## インストール
 
 ### 開発環境のセットアップ
 
 ```bash
-# 依存関係のインストール
 uv sync
-
-# pre-commitフックのインストール（開発者向け）
 pre-commit install
 ```
 
 ### パッケージとしてのインストール
 
 ```bash
-# GitHubからの直接インストール
-pip install git+https://github.com/chatflip/LrUtility.git
-
-# ローカルからのインストール
-pip install .
-```
-
-### uv toolsとしてのインストール
-
-`uv tools`を使用することで、個別のコマンドツールとして簡単にインストールできます：
-
-```bash
-# GitHubからのツールインストール
 uv tool install git+https://github.com/chatflip/LrUtility.git
-
-# ローカルからのツールインストール
-uv tool install .
-
-# 特定のコマンドだけを使いたい場合も同様にインストール
-uv tool install git+https://github.com/chatflip/LrUtility.git
-```
-
-インストール後、以下のコマンドがグローバルに利用可能になります：
-
-- `delete_rate_1`
-- `zip_chunker`
-
-ツールの管理：
-
-```bash
-# インストール済みツールの確認
-uv tool list
-
-# ツールのアップデート
-uv tool upgrade lrutility
-
-# ツールのアンインストール
-uv tool uninstall lrutility
 ```
 
 ## 使用方法
@@ -112,34 +72,6 @@ zip_chunker /path/to/directory --verbose
 - `directory`: 対象ディレクトリパス
 - `-s, --size_chunk`: チャンクサイズ（バイト単位、デフォルト: 20GB）
 - `-v, --verbose`: 詳細ログの有効化（DEBUGレベル）
-
-## 開発
-
-```bash
-# コードフォーマット実行
-make format
-# リンターと型チェック実行
-make lint
-# テスト実行
-make test
-```
-
-### プロジェクト構成
-
-```text
-LrUtility/
-├── src/lrutility/          # メインパッケージ
-│   ├── __init__.py
-│   ├── delete_rate_1.py    # レーティング1削除機能
-│   ├── zip_chunker.py      # ファイル分割・ZIP機能
-│   ├── XMPParser.py        # XMP解析エンジン
-│   ├── XMPDataclass.py     # データクラス定義
-│   └── logger.py           # ログ設定
-├── tests/                  # テストファイル
-│   ├── assets/             # テスト用XMPファイル
-│   └── test_xmp_parser.py  # パーサーテスト
-└── pyproject.toml          # プロジェクト設定
-```
 
 ## ライセンス
 

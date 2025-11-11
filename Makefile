@@ -1,21 +1,22 @@
-ifndef SOURCE_FILES
-	export SOURCE_FILES:=src
-endif
+.PHONY: help format lint test builddocs cleandocs
 
-ifndef TEST_FILES
-	export TEST_FILES:=tests
-endif
+.DEFAULT_GOAL := help
 
-.PHONY: lint format test
+help:
+	@echo "Usage: make <target>"
+	@echo "Targets:"
+	@echo "  format - Run formatting checks and fixes"
+	@echo "  lint - Run linting checks"
+	@echo "  test - Run tests"
 
 format:
-	mdformat README.md
-	uv run ruff format $(SOURCE_FILES) $(TEST_FILES)
-	uv run ruff check $(SOURCE_FILES) $(TEST_FILES) --fix-only --exit-zero
+	uv run ruff check --fix
+	uv run ruff format
+	uv run mdformat README.md
 
 lint:
-	uv run ruff check $(SOURCE_FILES) $(TEST_FILES)
-	uv run mypy ${SOURCE_FILES} ${TEST_FILES}
+	uv run ruff check
+	uv run ty check
 
 test:
-	uv run pytest ${TEST_FILES}
+	uv run pytest tests/ --cov=./ --cov-report=xml

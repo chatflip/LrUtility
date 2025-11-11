@@ -1,12 +1,12 @@
 [project]
 name = "lrutility"
-version = "0.0.1"
+version = "0.0.0"
 description = "Add your description here"
 readme = "README.md"
 authors = [
     { name = "chatflip", email = "oo.chat.flip@gmail.com" }
 ]
-requires-python = ">=3.11"
+requires-python = ">=3.13"
 dependencies = [
     "loguru>=0.7.3",
 ]
@@ -14,24 +14,26 @@ dependencies = [
 [dependency-groups]
 test = [
     "pytest",
+    "pytest-cov",
 ] 
 
 lint = [
-    "mypy~=1.17.0",
-    "ruff~=0.12.0",
+    "ruff==0.14.4", 
+    "ty>=0.0.1a25",
     "mdformat==0.7.21",
     "mdformat-footnote==0.1.1",
     "mdformat-frontmatter==2.0.8",
     "mdformat-gfm==0.4.1",
 ]
 
-[tool.uv]
-default-groups = ["test", "lint"]
 
 [project.scripts]
 delete_rate_1 = "lrutility.delete_rate_1:delete_rate_1_cli"
 zip_chunker = "lrutility.zip_chunker:zip_chunker_cli"
 
+[tool.uv]
+default-groups = "all"
+
 [build-system]
-requires = ["uv_build>=0.8.8,<0.9.0"]
+requires = ["uv_build>=0.9.7,<0.10.0"]
 build-backend = "uv_build"
