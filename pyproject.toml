@@ -26,10 +26,9 @@ lint = [
     "mdformat-gfm==0.4.1",
 ]
 
-
 [project.scripts]
-delete_rate_1 = "lrutility.delete_rate_1:delete_rate_1_cli"
-zip_chunker = "lrutility.zip_chunker:zip_chunker_cli"
+delete_rate_1 = "lrutility.cli.delete_rate_1:delete_rate_1"
+zip_chunker = "lrutility.cli.zip_chunker:zip_chunker"
 
 [tool.uv]
 default-groups = "all"

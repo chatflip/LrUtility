@@ -7,6 +7,31 @@ from loguru import logger
 from lrutility.utils.logger import configure_loguru
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "directory",
+        type=Path,
+        nargs="?",
+        help="Target directory to search for XMP files",
+    )
+    parser.add_argument(
+        "-s",
+        "--size_chunk",
+        type=int,
+        help="Size of each chunk in bytes",
+        default=20 * 1024**3,
+    )
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        action="store_true",
+        help="Enable verbose logging (DEBUG level)",
+    )
+    args = parser.parse_args()
+    return args
+
+
 def group_files(files: list[Path], max_group_size: int) -> list[list[Path]]:
     """Group files into chunks with size <= max_group_size.
 
@@ -35,8 +60,10 @@ def group_files(files: list[Path], max_group_size: int) -> list[list[Path]]:
     return groups
 
 
-def zip_chunker(args: argparse.Namespace) -> None:
-    configure_loguru(args.verbose)
+def zip_chunker() -> None:
+    args = parse_args()
+    configure_loguru(verbose=args.verbose)
+
     if not args.directory.is_dir():
         logger.error(f"{args.directory} is not a valid directory")
         return
@@ -56,29 +83,3 @@ def zip_chunker(args: argparse.Namespace) -> None:
                 arcname = str(file_path.relative_to(args.directory))
                 zf.write(str(file_path), arcname=arcname)
         logger.info(f"Created {archive_path}")
-
-
-def zip_chunker_cli() -> None:
-    """CLI entry point: Group files into chunks and zip them."""
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "directory",
-        type=Path,
-        nargs="?",
-        help="Target directory to search for XMP files",
-    )
-    parser.add_argument(
-        "-s",
-        "--size_chunk",
-        type=int,
-        help="Size of each chunk in bytes",
-        default=20 * 1024**3,
-    )
-    parser.add_argument(
-        "-v",
-        "--verbose",
-        action="store_true",
-        help="Enable verbose logging (DEBUG level)",
-    )
-    args = parser.parse_args()
-    zip_chunker(args)
