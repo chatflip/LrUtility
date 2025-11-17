@@ -1,35 +1,9 @@
-import argparse
 import zipfile
 from pathlib import Path
 
 from loguru import logger
 
 from lrutility.utils.logger import configure_loguru
-
-
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "directory",
-        type=Path,
-        nargs="?",
-        help="Target directory to search for XMP files",
-    )
-    parser.add_argument(
-        "-s",
-        "--size_chunk",
-        type=int,
-        help="Size of each chunk in bytes",
-        default=20 * 1024**3,
-    )
-    parser.add_argument(
-        "-v",
-        "--verbose",
-        action="store_true",
-        help="Enable verbose logging (DEBUG level)",
-    )
-    args = parser.parse_args()
-    return args
 
 
 def group_files(files: list[Path], max_group_size: int) -> list[list[Path]]:

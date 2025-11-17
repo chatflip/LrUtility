@@ -1,37 +1,9 @@
-import argparse
 from pathlib import Path
 
 from loguru import logger
 
 from lrutility.utils.logger import configure_loguru
 from lrutility.xmp.XMPParser import XMPParser
-
-
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="Delete image files and XMP files with rating 1"
-    )
-    parser.add_argument(
-        "directory",
-        type=Path,
-        nargs="?",
-        help="Target directory to search for XMP files",
-    )
-    parser.add_argument(
-        "-d",
-        "--dry_run",
-        action="store_true",
-        help="Perform a dry run without actually deleting files",
-    )
-    parser.add_argument(
-        "-v",
-        "--verbose",
-        action="store_true",
-        help="Enable verbose logging (DEBUG level)",
-    )
-
-    args = parser.parse_args()
-    return args
 
 
 def delete_image_and_xmp(raw_path: Path, xmp_path: Path, dry_run: bool) -> None:
