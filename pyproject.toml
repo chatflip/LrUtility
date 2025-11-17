@@ -44,6 +44,89 @@ MD041 = false    # first-line-heading/first-line-h1
 MD046 = false    # indented-code-blocks
 MD059 = false    # descriptive-link-text
 
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "src"]
+python_files = ["test_*.py", "*_test.py"]
+addopts = [
+    "--verbose",
+    "-rs",
+]
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/test_*.py",
+    "*/__init__.py",
+    "*/conftest.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "def __str__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "@abstract",
+    "@abstractmethod",
+    "pass",
+    "...",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+
+[tool.ruff.lint]
+select = [
+    "C",  # flake8-comprehensions
+    "E",  # pycodestyle error
+    "F",  # Pyflakes
+    "I",  # isort
+    "W",  # pycodestyle warning
+]
+ignore = []
+extend-select = []
+fixable = ["ALL"]
+unfixable = ["B"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.typos.src]
+include = ["src", "tests"]
+
+[tool.typos.terminal]
+error-on-warning = true
+
 [build-system]
 requires = ["uv_build>=0.9.7,<0.10.0"]
 build-backend = "uv_build"
