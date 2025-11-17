@@ -2,6 +2,7 @@ import zipfile
 from pathlib import Path
 
 from loguru import logger
+from tqdm import tqdm
 
 from lrutility.utils.logger import configure_loguru
 
@@ -52,7 +53,7 @@ def zip_chunker(directory: Path, size_chunk: int, verbose: bool) -> None:
     for i, group in enumerate(groups, start=1):
         archive_path = directory.parent / f"{directory.name}_{i}.zip"
         with zipfile.ZipFile(archive_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-            for file_path in group:
+            for file_path in tqdm(group, desc=f"Adding files to {archive_path}"):
                 arcname = str(file_path.relative_to(directory))
                 zf.write(str(file_path), arcname=arcname)
         logger.info(f"Created {archive_path}")
