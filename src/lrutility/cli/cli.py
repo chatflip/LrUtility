@@ -50,7 +50,7 @@ def zip_chunker_runner(
             "-s",
             help="Size of each chunk in bytes",
         ),
-    ] = 20 * 1024**3,
+    ] = 10 * 1024**3,
     verbose: Annotated[
         bool,
         typer.Option(
