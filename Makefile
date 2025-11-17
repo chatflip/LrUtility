@@ -5,9 +5,13 @@
 help:
 	@echo "Usage: make <target>"
 	@echo "Targets:"
+	@echo "  install - Install dependencies"
 	@echo "  format - Run formatting checks and fixes"
 	@echo "  lint - Run linting checks"
 	@echo "  test - Run tests"
+
+install:
+	uv sync --all-groups
 
 format:
 	uv run ruff check --fix

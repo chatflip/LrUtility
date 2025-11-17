@@ -31,7 +31,7 @@ delete_rate_1 = "lrutility.cli.delete_rate_1:delete_rate_1"
 zip_chunker = "lrutility.cli.zip_chunker:zip_chunker"
 
 [tool.uv]
-default-groups = "all"
+default-groups = []
 
 [build-system]
 requires = ["uv_build>=0.9.7,<0.10.0"]
