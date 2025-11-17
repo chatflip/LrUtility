@@ -12,6 +12,10 @@ dependencies = [
 ]
 
 [dependency-groups]
+dev = [
+    "pre-commit",
+]
+
 test = [
     "pytest",
     "pytest-cov",
@@ -28,6 +32,17 @@ zip_chunker = "lrutility.cli.zip_chunker:zip_chunker"
 
 [tool.uv]
 default-groups = []
+
+[tool.markdown.lint]
+default = true
+MD004 = false    # ul-style - Unordered list style
+MD007.indent = 2 # ul-indent - Unordered list indentation
+MD013 = false    # line-length - Line length
+MD029 = false    # ol-prefix - Ordered list item prefix
+MD033 = false    # no-inline-html Inline HTML
+MD041 = false    # first-line-heading/first-line-h1
+MD046 = false    # indented-code-blocks
+MD059 = false    # descriptive-link-text
 
 [build-system]
 requires = ["uv_build>=0.9.7,<0.10.0"]
