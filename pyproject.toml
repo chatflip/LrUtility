@@ -9,6 +9,7 @@ authors = [
 requires-python = ">=3.13"
 dependencies = [
     "loguru>=0.7.3",
+    "typer>=0.20.0",
 ]
 
 [dependency-groups]
@@ -27,8 +28,7 @@ lint = [
 ]
 
 [project.scripts]
-delete_rate_1 = "lrutility.cli.delete_rate_1:delete_rate_1"
-zip_chunker = "lrutility.cli.zip_chunker:zip_chunker"
+lru = "lrutility.cli.cli:app"
 
 [tool.uv]
 default-groups = []

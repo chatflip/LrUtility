@@ -60,26 +60,25 @@ def group_files(files: list[Path], max_group_size: int) -> list[list[Path]]:
     return groups
 
 
-def zip_chunker() -> None:
-    args = parse_args()
-    configure_loguru(verbose=args.verbose)
+def zip_chunker(directory: Path, size_chunk: int, verbose: bool) -> None:
+    configure_loguru(verbose=verbose)
 
-    if not args.directory.is_dir():
-        logger.error(f"{args.directory} is not a valid directory")
+    if not directory.is_dir():
+        logger.error(f"{directory} is not a valid directory")
         return
 
-    files = [f for f in args.directory.iterdir() if f.is_file()]
+    files = [f for f in directory.iterdir() if f.is_file()]
     files.sort()
     if not files:
-        logger.error(f"No files found in {args.directory}")
+        logger.error(f"No files found in {directory}")
         return
 
-    groups: list[list[Path]] = group_files(files, args.size_chunk)
+    groups: list[list[Path]] = group_files(files, size_chunk)
 
     for i, group in enumerate(groups, start=1):
-        archive_path = args.directory.parent / f"{args.directory.name}_{i}.zip"
+        archive_path = directory.parent / f"{directory.name}_{i}.zip"
         with zipfile.ZipFile(archive_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
             for file_path in group:
-                arcname = str(file_path.relative_to(args.directory))
+                arcname = str(file_path.relative_to(directory))
                 zf.write(str(file_path), arcname=arcname)
         logger.info(f"Created {archive_path}")
