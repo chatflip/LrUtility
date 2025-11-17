@@ -46,22 +46,21 @@ def delete_image_and_xmp(raw_path: Path, xmp_path: Path, dry_run: bool) -> None:
         logger.info(message_template.format(path=xmp_path))
 
 
-def delete_rate_1() -> None:
-    args = parse_args()
-    configure_loguru(verbose=args.verbose)
+def delete_rate_1(
+    directory: Path,
+    dry_run: bool,
+    verbose: bool,
+) -> None:
+    configure_loguru(verbose=verbose)
 
-    if args.directory is None:
+    if not directory.exists():
         logger.error("Target Directory is not specified")
         return
 
-    logger.info(f"Target Directory: {args.directory}")
-    if not args.directory.exists():
-        logger.error(f"Target Directory Does Not Exist: {args.directory}")
-        return
-
+    logger.info(f"Target Directory: {directory}")
     parser = XMPParser()
 
-    meta_paths = args.directory.glob("**/*.xmp")
+    meta_paths = directory.glob("**/*.xmp")
     meta_paths = sorted(meta_paths)
     for meta_path in meta_paths:
         metadata = parser.parse(meta_path)
@@ -70,6 +69,6 @@ def delete_rate_1() -> None:
             continue
         rating = metadata.xmp_info.rating
         raw_filename = metadata.camera_raw_settings.raw_file_name
-        raw_path = args.directory / raw_filename
+        raw_path = directory / raw_filename
         if rating == 1:
-            delete_image_and_xmp(raw_path, meta_path, args.dry_run)
+            delete_image_and_xmp(raw_path, meta_path, dry_run)

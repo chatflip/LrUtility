@@ -19,7 +19,7 @@ Adobe Lightroomで使用されるXMPファイルを解析し、画像ファイ�
 
 ```bash
 uv sync
-pre-commit install
+make install
 ```
 
 ### パッケージとしてのインストール
@@ -30,48 +30,28 @@ uv tool install git+https://github.com/chatflip/LrUtility.git
 
 ## 使用方法
 
-### 1. レーティング1の画像ファイル削除
-
-Adobe Lightroomでレーティング1を付けた画像ファイルとXMPファイルを一括削除します。
-
-- `directory`: 検索対象のディレクトリパス
-- `-d, --dry_run`: ドライランモード（実際に削除せずに対象ファイルを表示）
-- `-v, --verbose`: 詳細ログの有効化（DEBUGレベル）
+### レーティング1の画像ファイル削除
 
 ```bash
-# 基本的な使用方法
-delete_rate_1 /path/to/photos
-
-# ドライランモード（実際に削除せずに対象ファイルを表示）
-delete_rate_1 /path/to/photos --dry_run
-
-# 詳細ログを有効にして実行
-delete_rate_1 /path/to/photos --verbose
+lru delete-rate-1 /path/to/photos
+lru delete-rate-1 /path/to/photos --dry-run  # 削除せずに確認
+lru delete-rate-1 /path/to/photos --verbose  # 詳細ログ
 ```
 
-### 2. ファイル分割・ZIPアーカイブ化
-
-ディレクトリ内のファイルを指定サイズごとにZIPアーカイブに分割します。
-
-- `directory`: 検索対象のディレクトリパス
-- `-v, --verbose`: 詳細ログの有効化（DEBUGレベル）
+### ファイル分割・ZIPアーカイブ化
 
 ```bash
-# 基本的な使用方法（デフォルト20GB）
-zip_chunker /path/to/directory
-
-# チャンクサイズを指定（10GBに設定）
-zip_chunker /path/to/directory --size_chunk 10737418240
-
-# 詳細ログを有効にして実行
-zip_chunker /path/to/directory --verbose
+lru zip-chunker /path/to/directory                          # デフォルト20GB
+lru zip-chunker /path/to/directory --size-chunk 10737418240 # 10GBに指定
 ```
 
-### オプション
+### ヘルプ
 
-- `directory`: 対象ディレクトリパス
-- `-s, --size_chunk`: チャンクサイズ（バイト単位、デフォルト: 20GB）
-- `-v, --verbose`: 詳細ログの有効化（DEBUGレベル）
+```bash
+lru --help              # 全体のヘルプ
+lru delete-rate-1 --help
+lru zip-chunker --help
+```
 
 ## ライセンス
 
@@ -83,6 +63,6 @@ zip_chunker /path/to/directory --verbose
 
 ## 注意事項
 
-- **重要**: `delete_rate_1`コマンドは実際にファイルを削除します。必ず事前に`--dry_run`オプションで動作を確認してください。
+- **重要**: `lru delete-rate-1`コマンドは実際にファイルを削除します。必ず事前に`--dry-run`オプションで動作を確認してください。
 - XMPファイルは写真編集ソフトウェア（Adobe Lightroom、Camera Raw等）で生成されるメタデータファイルです。
 - このツールはAdobe Lightroomのワークフローを前提として設計されています。
